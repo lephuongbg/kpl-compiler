@@ -86,6 +86,9 @@ Token* readNumber(void) {
   Token* token = makeToken(TK_NUMBER, lineNo, colNo);
 
   while (charCodes[currentChar] == CHAR_DIGIT) {
+	if (count > 9) {
+		error(ERR_NUMBERTOOLONG, token->lineNo, token->colNo);
+	}
     // Add current character to the number
     token->string[count] = currentChar;
 
