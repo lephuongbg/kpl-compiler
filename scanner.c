@@ -117,10 +117,9 @@ Token* readConstChar(void) {
   if (currentChar == -1) { // End of File
     error(ERR_INVALIDCHARCONSTANT, token->lineNo, token->colNo);
   } else {
-	switch(currentChar) {
+	switch(charCodes[currentChar]) {
 	// Escape character for Single Quote:
-	case '\'':
-	case '\\':
+	case CHAR_SINGLEQUOTE:
 		// Read next character
 		readChar();
 
@@ -294,7 +293,7 @@ Token* getToken(void) {
     readChar();
     if (charCodes[currentChar] == CHAR_RPAR) {
       // it is token Right Parenthesis
-      token->tokenType = SB_RPAR;
+      token->tokenType = SB_RSEL;
       readChar();
     }
     return token;
