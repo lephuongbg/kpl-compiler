@@ -111,33 +111,57 @@ Token* readNumber(void) {
 Token* readConstChar(void) {
   Token* token = makeToken(TK_CHAR, lineNo, colNo);
 
-  // Add first single quote to token string
-  token->string[0] = currentChar;
-
   // Read next character
   readChar();
 
   if (currentChar == -1) { // End of File
     error(ERR_INVALIDCHARCONSTANT, token->lineNo, token->colNo);
   } else {
-    // Add the character to token string
-    token->string[1] = currentChar;
+	switch(currentChar) {
+	// Escape character for Single Quote:
+	case '\'':
+	case '\\':
+		// Read next character
+		readChar();
 
-    // Read next character
-    readChar();
+		if (charCodes[currentChar] == CHAR_SINGLEQUOTE) {
+		    token->string[0] = currentChar;
 
-    switch(charCodes[currentChar]) {
-    case CHAR_SINGLEQUOTE:
-        // Add the ending single quote to token string
-        token->string[2] = currentChar;
-        token->string[3] = '\0';
-        readChar();
-        return token;
-    default:
-        error(ERR_INVALIDCHARCONSTANT, token->lineNo, token->colNo);
-        token->tokenType = TK_NONE;
-        return token;
-    }
+		    readChar();
+		    if (charCodes[currentChar] == CHAR_SINGLEQUOTE) {
+		        token->string[1] = '\0';
+
+		        readChar();
+		        return token;
+		    } else {
+		        error(ERR_INVALIDCHARCONSTANT, token->lineNo, token->colNo);
+		    }
+
+		} else {
+			error(ERR_INVALIDCHARCONSTANT, token->lineNo, token->colNo);
+		}
+		break;
+	default:
+	    // Add the character to token string
+        token->string[0] = currentChar;
+
+		// Read next character
+		readChar();
+
+		switch(charCodes[currentChar]) {
+		case CHAR_SINGLEQUOTE:
+			// End token
+			token->string[1] = '\0';
+
+			readChar();
+			return token;
+		default:
+			error(ERR_INVALIDCHARCONSTANT, token->lineNo, token->colNo);
+			break;
+		}
+		break;
+	}
+
   }
   return token;
 }
