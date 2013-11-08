@@ -1,0 +1,298 @@
+Parsing a Program ....
+1-1:KW_PROGRAM
+1-10:TK_IDENT(EXAMPLE3)
+1-18:SB_SEMICOLON
+Parsing a Block ....
+2-1:KW_VAR
+2-6:TK_IDENT(I)
+2-7:SB_COLON
+2-8:KW_INTEGER
+2-15:SB_SEMICOLON
+3-6:TK_IDENT(N)
+3-7:SB_COLON
+3-8:KW_INTEGER
+3-15:SB_SEMICOLON
+4-6:TK_IDENT(P)
+4-7:SB_COLON
+4-8:KW_INTEGER
+4-15:SB_SEMICOLON
+5-6:TK_IDENT(Q)
+5-7:SB_COLON
+5-8:KW_INTEGER
+5-15:SB_SEMICOLON
+6-6:TK_IDENT(C)
+6-7:SB_COLON
+6-8:KW_CHAR
+6-12:SB_SEMICOLON
+Parsing subtoutines ....
+Parsing a procedure ....
+8-1:KW_PROCEDURE
+8-12:TK_IDENT(HANOI)
+8-17:SB_LPAR
+8-18:TK_IDENT(N)
+8-19:SB_COLON
+8-20:KW_INTEGER
+8-27:SB_SEMICOLON
+8-30:TK_IDENT(S)
+8-31:SB_COLON
+8-32:KW_INTEGER
+8-39:SB_SEMICOLON
+8-42:TK_IDENT(Z)
+8-43:SB_COLON
+8-44:KW_INTEGER
+8-51:SB_RPAR
+8-52:SB_SEMICOLON
+Parsing a Block ....
+Parsing subtoutines ....
+Subtoutines parsed ....
+9-1:KW_BEGIN
+Parsing an if statement ....
+10-3:KW_IF
+Parsing an expression
+10-7:TK_IDENT(N)
+Expression parsed
+10-9:SB_NEQ
+Parsing an expression
+10-12:TK_NUMBER(0)
+Expression parsed
+10-15:KW_THEN
+Parsing a group statement ....
+11-5:KW_BEGIN
+Parsing a call statement ....
+12-7:KW_CALL
+12-13:TK_IDENT(HANOI)
+12-18:SB_LPAR
+Parsing an expression
+12-19:TK_IDENT(N)
+12-20:SB_MINUS
+12-21:TK_NUMBER(1)
+Expression parsed
+12-22:SB_COMMA
+Parsing an expression
+12-23:TK_IDENT(S)
+Expression parsed
+12-24:SB_COMMA
+Parsing an expression
+12-25:TK_NUMBER(6)
+12-26:SB_MINUS
+12-27:TK_IDENT(S)
+12-28:SB_MINUS
+12-29:TK_IDENT(Z)
+Expression parsed
+12-30:SB_RPAR
+Call statement parsed ....
+12-31:SB_SEMICOLON
+Parsing an assign statement ....
+13-7:TK_IDENT(I)
+13-8:SB_ASSIGN
+Parsing an expression
+13-10:TK_IDENT(I)
+13-11:SB_PLUS
+13-12:TK_NUMBER(1)
+Expression parsed
+Assign statement parsed ....
+13-13:SB_SEMICOLON
+Parsing a call statement ....
+14-7:KW_CALL
+14-13:TK_IDENT(WRITELN)
+Call statement parsed ....
+14-20:SB_SEMICOLON
+Parsing a call statement ....
+15-7:KW_CALL
+15-13:TK_IDENT(WRITEI)
+15-19:SB_LPAR
+Parsing an expression
+15-20:TK_IDENT(I)
+Expression parsed
+15-21:SB_RPAR
+Call statement parsed ....
+15-22:SB_SEMICOLON
+Parsing a call statement ....
+16-7:KW_CALL
+16-13:TK_IDENT(WRITEI)
+16-19:SB_LPAR
+Parsing an expression
+16-20:TK_IDENT(N)
+Expression parsed
+16-21:SB_RPAR
+Call statement parsed ....
+16-22:SB_SEMICOLON
+Parsing a call statement ....
+17-7:KW_CALL
+17-13:TK_IDENT(WRITEI)
+17-19:SB_LPAR
+Parsing an expression
+17-20:TK_IDENT(S)
+Expression parsed
+17-21:SB_RPAR
+Call statement parsed ....
+17-22:SB_SEMICOLON
+Parsing a call statement ....
+18-7:KW_CALL
+18-13:TK_IDENT(WRITEI)
+18-19:SB_LPAR
+Parsing an expression
+18-20:TK_IDENT(Z)
+Expression parsed
+18-21:SB_RPAR
+Call statement parsed ....
+18-22:SB_SEMICOLON
+Parsing a call statement ....
+19-7:KW_CALL
+19-13:TK_IDENT(HANOI)
+19-18:SB_LPAR
+Parsing an expression
+19-19:TK_IDENT(N)
+19-20:SB_MINUS
+19-21:TK_NUMBER(1)
+Expression parsed
+19-22:SB_COMMA
+Parsing an expression
+19-23:TK_NUMBER(6)
+19-24:SB_MINUS
+19-25:TK_IDENT(S)
+19-26:SB_MINUS
+19-27:TK_IDENT(Z)
+Expression parsed
+19-28:SB_COMMA
+Parsing an expression
+19-29:TK_IDENT(Z)
+Expression parsed
+19-30:SB_RPAR
+Call statement parsed ....
+20-5:KW_END
+Group statement parsed ....
+If statement parsed ....
+21-1:KW_END
+Block parsed!
+21-4:SB_SEMICOLON
+Procedure parsed ....
+Subtoutines parsed ....
+23-1:KW_BEGIN
+Parsing a for statement ....
+24-3:KW_FOR
+24-8:TK_IDENT(N)
+24-10:SB_ASSIGN
+Parsing an expression
+24-13:TK_NUMBER(1)
+Expression parsed
+24-16:KW_TO
+Parsing an expression
+24-20:TK_NUMBER(4)
+Expression parsed
+24-23:KW_DO
+Parsing a group statement ....
+25-5:KW_BEGIN
+Parsing a for statement ....
+26-7:KW_FOR
+26-12:TK_IDENT(I)
+26-13:SB_ASSIGN
+Parsing an expression
+26-15:TK_NUMBER(1)
+Expression parsed
+26-18:KW_TO
+Parsing an expression
+26-22:TK_NUMBER(4)
+Expression parsed
+26-25:KW_DO
+Parsing a call statement ....
+27-9:KW_CALL
+27-15:TK_IDENT(WRITEC)
+27-21:SB_LPAR
+Parsing an expression
+27-22:TK_CHAR(' ')
+Expression parsed
+27-25:SB_RPAR
+Call statement parsed ....
+For statement parsed ....
+27-26:SB_SEMICOLON
+Parsing a call statement ....
+28-7:KW_CALL
+28-13:TK_IDENT(READC)
+28-18:SB_LPAR
+Parsing an expression
+28-19:TK_IDENT(C)
+Expression parsed
+28-20:SB_RPAR
+Call statement parsed ....
+28-21:SB_SEMICOLON
+Parsing a call statement ....
+29-7:KW_CALL
+29-13:TK_IDENT(WRITEC)
+29-19:SB_LPAR
+Parsing an expression
+29-20:TK_IDENT(C)
+Expression parsed
+29-21:SB_RPAR
+Call statement parsed ....
+30-5:KW_END
+Group statement parsed ....
+For statement parsed ....
+30-8:SB_SEMICOLON
+Parsing an assign statement ....
+31-3:TK_IDENT(P)
+31-4:SB_ASSIGN
+Parsing an expression
+31-6:TK_NUMBER(1)
+Expression parsed
+Assign statement parsed ....
+31-7:SB_SEMICOLON
+Parsing an assign statement ....
+32-3:TK_IDENT(Q)
+32-4:SB_ASSIGN
+Parsing an expression
+32-6:TK_NUMBER(2)
+Expression parsed
+Assign statement parsed ....
+32-7:SB_SEMICOLON
+Parsing a for statement ....
+33-3:KW_FOR
+33-8:TK_IDENT(N)
+33-9:SB_ASSIGN
+Parsing an expression
+33-11:TK_NUMBER(2)
+Expression parsed
+33-14:KW_TO
+Parsing an expression
+33-18:TK_NUMBER(4)
+Expression parsed
+33-21:KW_DO
+Parsing a group statement ....
+34-5:KW_BEGIN
+Parsing an assign statement ....
+35-7:TK_IDENT(I)
+35-8:SB_ASSIGN
+Parsing an expression
+35-10:TK_NUMBER(0)
+Expression parsed
+Assign statement parsed ....
+35-11:SB_SEMICOLON
+Parsing a call statement ....
+36-7:KW_CALL
+36-13:TK_IDENT(HANOI)
+36-18:SB_LPAR
+Parsing an expression
+36-19:TK_IDENT(N)
+Expression parsed
+36-20:SB_COMMA
+Parsing an expression
+36-21:TK_IDENT(P)
+Expression parsed
+36-22:SB_COMMA
+Parsing an expression
+36-23:TK_IDENT(Q)
+Expression parsed
+36-24:SB_RPAR
+Call statement parsed ....
+36-25:SB_SEMICOLON
+Parsing a call statement ....
+37-7:KW_CALL
+37-13:TK_IDENT(WRITELN)
+Call statement parsed ....
+38-5:KW_END
+Group statement parsed ....
+For statement parsed ....
+39-1:KW_END
+Block parsed!
+39-4:SB_PERIOD
+Program parsed!

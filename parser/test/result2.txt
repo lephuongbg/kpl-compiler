@@ -1,0 +1,110 @@
+Parsing a Program ....
+1-1:KW_PROGRAM
+1-9:TK_IDENT(Example2)
+1-17:SB_SEMICOLON
+Parsing a Block ....
+3-1:KW_VAR
+3-5:TK_IDENT(n)
+3-7:SB_COLON
+3-9:KW_INTEGER
+3-16:SB_SEMICOLON
+Parsing subtoutines ....
+Parsing a function ....
+5-1:KW_FUNCTION
+5-10:TK_IDENT(F)
+5-11:SB_LPAR
+5-12:TK_IDENT(n)
+5-14:SB_COLON
+5-16:KW_INTEGER
+5-23:SB_RPAR
+5-25:SB_COLON
+5-27:KW_INTEGER
+5-34:SB_SEMICOLON
+Parsing a Block ....
+Parsing subtoutines ....
+Subtoutines parsed ....
+6-3:KW_BEGIN
+Parsing an if statement ....
+7-5:KW_IF
+Parsing an expression
+7-8:TK_IDENT(n)
+Expression parsed
+7-10:SB_EQ
+Parsing an expression
+7-12:TK_NUMBER(0)
+Expression parsed
+7-14:KW_THEN
+Parsing an assign statement ....
+7-19:TK_IDENT(F)
+7-21:SB_ASSIGN
+Parsing an expression
+7-24:TK_NUMBER(1)
+Expression parsed
+Assign statement parsed ....
+7-26:KW_ELSE
+Parsing an assign statement ....
+7-31:TK_IDENT(F)
+7-33:SB_ASSIGN
+Parsing an expression
+7-36:TK_IDENT(N)
+7-38:SB_TIMES
+7-40:TK_IDENT(F)
+7-42:SB_LPAR
+Parsing an expression
+7-43:TK_IDENT(N)
+7-45:SB_MINUS
+7-47:TK_NUMBER(1)
+Expression parsed
+7-48:SB_RPAR
+Expression parsed
+Assign statement parsed ....
+If statement parsed ....
+7-49:SB_SEMICOLON
+8-3:KW_END
+Block parsed!
+8-6:SB_SEMICOLON
+Function parsed ....
+Subtoutines parsed ....
+10-1:KW_BEGIN
+Parsing a for statement ....
+11-3:KW_FOR
+11-7:TK_IDENT(n)
+11-9:SB_ASSIGN
+Parsing an expression
+11-12:TK_NUMBER(1)
+Expression parsed
+11-14:KW_TO
+Parsing an expression
+11-17:TK_NUMBER(7)
+Expression parsed
+11-19:KW_DO
+Parsing a group statement ....
+12-5:KW_BEGIN
+Parsing a call statement ....
+13-7:KW_CALL
+13-12:TK_IDENT(WriteLn)
+Call statement parsed ....
+13-19:SB_SEMICOLON
+Parsing a call statement ....
+14-7:KW_CALL
+14-12:TK_IDENT(WriteI)
+14-18:SB_LPAR
+Parsing an expression
+14-20:TK_IDENT(F)
+14-21:SB_LPAR
+Parsing an expression
+14-22:TK_IDENT(i)
+Expression parsed
+14-23:SB_RPAR
+Expression parsed
+14-24:SB_RPAR
+Call statement parsed ....
+14-25:SB_SEMICOLON
+15-5:KW_END
+Group statement parsed ....
+For statement parsed ....
+15-8:SB_SEMICOLON
+16-1:KW_END
+Block parsed!
+16-4:SB_PERIOD
+Program parsed!
