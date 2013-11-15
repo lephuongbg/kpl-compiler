@@ -463,7 +463,7 @@ void compileArguments(void) {
       break;
   // Error
   default:
-      error(ERR_INVALIDSTATEMENT, lookAhead->lineNo, lookAhead->colNo);
+      error(ERR_INVALIDARGUMENTS, lookAhead->lineNo, lookAhead->colNo);
       break;
   }
 }
