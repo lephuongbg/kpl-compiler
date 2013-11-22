@@ -191,8 +191,51 @@ Object* createParameterObject(char *name, enum ParamKind kind, Object* owner) {
 
 void freeObject(Object* obj) {
     if (obj != NULL) {
-        if (obj->constAttrs != NULL)
+        if (obj->constAttrs != NULL) {
+            switch (obj->kind) {
+            case OBJ_CONSTANT:
+                if (obj->constAttrs->value != NULL) {
+                    free(obj->constAttrs->value);
+                    obj->constAttrs->value = NULL;
+                }
+                break;
+            case OBJ_VARIABLE:
+                if (obj->varAttrs->type != NULL) {
+                    free(obj->varAttrs->type);
+                    obj->varAttrs->type = NULL;
+                }
+                break;
+            case OBJ_TYPE:
+                if (obj->typeAttrs->actualType != NULL) {
+                    free(obj->typeAttrs->actualType);
+                    obj->typeAttrs->actualType = NULL;
+                }
+                break;
+            case OBJ_PROGRAM:
+                if (obj->progAttrs->scope != NULL) {
+                    freeScope(obj->progAttrs->scope);
+                    obj->progAttrs->scope = NULL;
+                }
+                break;
+            case OBJ_FUNCTION:
+                freeScope(obj->funcAttrs->scope); // Free scope also free the param list
+                break;
+            case OBJ_PROCEDURE:
+                freeScope(obj->procAttrs->scope); // Free scope also free the param list
+                break;
+            case OBJ_PARAMETER:
+                if (obj->paramAttrs->type != NULL) {
+                    free(obj->paramAttrs->type);
+                    obj->paramAttrs->type = NULL;
+                }
+                break;
+            default:
+                break;
+            }
+
             free(obj->constAttrs);
+            obj->constAttrs = NULL;
+        }
         free(obj);
         obj = NULL;
     }
@@ -206,23 +249,10 @@ void freeScope(Scope* scope) {
     }
 }
 
+// FIXME How is this different from freeReferenceList()
 void freeObjectList(ObjectNode *objList) {
     if (objList != NULL) {
-        if (objList->object != NULL) {
-            // Free parameter list first for function and procedure
-            switch (objList->object->kind) {
-            case OBJ_FUNCTION:
-                freeReferenceList(objList->object->funcAttrs->paramList);
-                break;
-            case OBJ_PROCEDURE:
-                freeReferenceList(objList->object->procAttrs->paramList);
-                break;
-            default:
-                break;
-            }
-
-            free(objList->object);
-        }
+        freeObject(objList->object);
         freeObjectList(objList->next);
         objList = NULL;
     }
@@ -230,7 +260,7 @@ void freeObjectList(ObjectNode *objList) {
 
 void freeReferenceList(ObjectNode *objList) {
     if (objList != NULL) {
-        free(objList->object);
+        freeObject(objList->object);
         freeReferenceList(objList->next);
         objList = NULL;
     }
