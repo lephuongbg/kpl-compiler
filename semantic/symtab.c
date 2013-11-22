@@ -208,14 +208,32 @@ void freeScope(Scope* scope) {
 
 void freeObjectList(ObjectNode *objList) {
     if (objList != NULL) {
-        free(objList->object);
+        if (objList->object != NULL) {
+            // Free parameter list first for function and procedure
+            switch (objList->object->kind) {
+            case OBJ_FUNCTION:
+                freeReferenceList(objList->object->funcAttrs->paramList);
+                break;
+            case OBJ_PROCEDURE:
+                freeReferenceList(objList->object->procAttrs->paramList);
+                break;
+            default:
+                break;
+            }
+
+            free(objList->object);
+        }
         freeObjectList(objList->next);
+        objList = NULL;
     }
-    objList = NULL;
 }
 
 void freeReferenceList(ObjectNode *objList) {
-  // TODO
+    if (objList != NULL) {
+        free(objList->object);
+        freeReferenceList(objList->next);
+        objList = NULL;
+    }
 }
 
 void addObject(ObjectNode **objList, Object* obj) {
