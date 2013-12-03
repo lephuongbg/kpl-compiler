@@ -49,7 +49,7 @@ void compileProgram(void) {
 }
 
 void compileBlock(void) {
-  // TODO: create and declare constant objects
+  // create and declare constant objects
   Object * obj = NULL;
   if (lookAhead->tokenType == KW_CONST) {
     eat(KW_CONST);
@@ -59,8 +59,9 @@ void compileBlock(void) {
       obj = createConstantObject(currentToken->string);
 
       eat(SB_EQ);
-      compileConstant();
+      obj->constAttrs->value = compileConstant();
       eat(SB_SEMICOLON);
+      declareObject(obj);
     } while (lookAhead->tokenType == TK_IDENT);
 
     compileBlock2();
@@ -140,14 +141,17 @@ void compileFuncDecl(void) {
   obj = createFunctionObject(currentToken->string);
   enterBlock(obj->funcAttrs->scope);
 
-  // FIXME: Where's param list and return type
   compileParams();
   eat(SB_COLON);
 
+  obj->funcAttrs->returnType = compileBasicType();
   eat(SB_SEMICOLON);
+
   compileBlock();
   eat(SB_SEMICOLON);
   exitBlock();
+
+  declareObject(obj);
 }
 
 void compileProcDecl(void) {
@@ -159,12 +163,13 @@ void compileProcDecl(void) {
   obj = createProcedureObject(currentToken->string);
   enterBlock(obj->procAttrs->scope);
 
-  // FIXME: Where's param list
   compileParams();
   eat(SB_SEMICOLON);
   compileBlock();
   eat(SB_SEMICOLON);
   exitBlock();
+
+  declareObject(obj);
 }
 
 ConstantValue* compileUnsignedConstant(void) {
@@ -186,7 +191,9 @@ ConstantValue* compileUnsignedConstant(void) {
         error(ERR_INVALID_CONSTANT, currentToken->lineNo, currentToken->colNo);
     }
 
-    constValue = obj->constAttrs->value;
+    // Copy constant value from declared constant
+    constValue = (ConstantValue*) malloc(sizeof(ConstantValue));
+    *constValue = *(obj->constAttrs->value);
     break;
   case TK_CHAR:
     eat(TK_CHAR);
@@ -243,7 +250,9 @@ ConstantValue* compileConstant2(void) {
     else if (obj->kind != OBJ_CONSTANT)
         error(ERR_INVALID_CONSTANT, currentToken->lineNo, currentToken->colNo);
 
-    constValue = obj->constAttrs->value;
+    // Copy constant value from declared constant
+    constValue = (ConstantValue*) malloc(sizeof(ConstantValue));
+    *constValue = *(obj->constAttrs->value);
     break;
   default:
     error(ERR_INVALID_CONSTANT, lookAhead->lineNo, lookAhead->colNo);
@@ -289,7 +298,9 @@ Type* compileType(void) {
       error(ERR_INVALID_TYPE, currentToken->lineNo, currentToken->colNo);
     }
 
-    type = obj->typeAttrs->actualType;
+    // Copy type from declared one
+    type = (Type*) malloc(sizeof(Type));
+    *type = *(obj->typeAttrs->actualType);
     break;
   default:
     error(ERR_INVALID_TYPE, lookAhead->lineNo, lookAhead->colNo);
