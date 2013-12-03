@@ -251,8 +251,7 @@ ConstantValue* compileConstant2(void) {
         error(ERR_INVALID_CONSTANT, currentToken->lineNo, currentToken->colNo);
 
     // Copy constant value from declared constant
-    constValue = (ConstantValue*) malloc(sizeof(ConstantValue));
-    *constValue = *(obj->constAttrs->value);
+    constValue = duplicateConstantValue(obj->constAttrs->value);
     break;
   default:
     error(ERR_INVALID_CONSTANT, lookAhead->lineNo, lookAhead->colNo);
@@ -299,8 +298,7 @@ Type* compileType(void) {
     }
 
     // Copy type from declared one
-    type = (Type*) malloc(sizeof(Type));
-    *type = *(obj->typeAttrs->actualType);
+    type = duplicateType(obj->typeAttrs->actualType);
     break;
   default:
     error(ERR_INVALID_TYPE, lookAhead->lineNo, lookAhead->colNo);
@@ -346,12 +344,11 @@ void compileParams(void) {
 }
 
 void compileParam(void) {
-  // TODO: create and declare a parameter
+  // create and declare a parameter
   Object* obj = NULL;
   switch (lookAhead->tokenType) {
   case TK_IDENT:
     eat(TK_IDENT);
-    // FIXME: Value or reference
     obj = createParameterObject(currentToken->string, PARAM_VALUE, symtab->currentScope->owner);
     eat(SB_COLON);
 
@@ -361,7 +358,7 @@ void compileParam(void) {
   case KW_VAR:
     eat(KW_VAR);
     eat(TK_IDENT);
-    obj = createParameterObject(currentToken->string, PARAM_VALUE, symtab->currentScope->owner);
+    obj = createParameterObject(currentToken->string, PARAM_REFERENCE, symtab->currentScope->owner);
     eat(SB_COLON);
 
     obj->paramAttrs->type = compileBasicType();
