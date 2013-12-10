@@ -63,6 +63,9 @@ Object* checkDeclaredIdent(char* name) {
     // Reset search
     on_search = 0;
 
+    if (obj == NULL)
+        error(ERR_UNDECLARED_IDENT, currentToken->lineNo, currentToken->colNo);
+
     return obj;
 }
 
@@ -80,6 +83,9 @@ Object* checkDeclaredConstant(char* name) {
 
     // End search
     on_search = 0;
+
+    if (obj == NULL)
+        error(ERR_UNDECLARED_CONSTANT, currentToken->lineNo, currentToken->colNo);
 
     return obj;
 }
@@ -99,6 +105,9 @@ Object* checkDeclaredType(char* name) {
     // End search
     on_search = 0;
 
+    if (obj == NULL)
+        error(ERR_UNDECLARED_TYPE, currentToken->lineNo, currentToken->colNo);
+
     return obj;
 }
 
@@ -116,6 +125,9 @@ Object* checkDeclaredVariable(char* name) {
 
     // End search
     on_search = 0;
+
+    if (obj == NULL)
+        error(ERR_UNDECLARED_VARIABLE, currentToken->lineNo, currentToken->colNo);
 
     return obj;
 }
@@ -135,6 +147,9 @@ Object* checkDeclaredFunction(char* name) {
     // End search
     on_search = 0;
 
+    if (obj == NULL)
+            error(ERR_UNDECLARED_FUNCTION, currentToken->lineNo, currentToken->colNo);
+
     return obj;
 }
 
@@ -153,6 +168,9 @@ Object* checkDeclaredProcedure(char* name) {
     // End search
     on_search = 0;
 
+    if (obj == NULL)
+            error(ERR_UNDECLARED_PROCEDURE, currentToken->lineNo, currentToken->colNo);
+
     return obj;
 }
 
@@ -170,6 +188,9 @@ Object* checkDeclaredLValueIdent(char* name) {
 
     // End search
     on_search = 0;
+
+    if (obj == NULL)
+            error(ERR_UNDECLARED_IDENT, currentToken->lineNo, currentToken->colNo);
 
     return obj;
 }
