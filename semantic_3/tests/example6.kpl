@@ -17,9 +17,13 @@ Program Example6;
           t2 = array(. 10 .) of t1;
      var v2 : t2;
          v3 : char;
+         example6 : integer;
      begin
 	v3 := 'a';
         v1 := f(c3,v3);
+        for v3 := 1 to 10 do begin
+         Example6 := 3;
+         end
      end;
 
 Begin
