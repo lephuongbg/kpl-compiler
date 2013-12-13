@@ -1,0 +1,19 @@
+Program EXAMPLE6 at address 0
+    Const C1 = 10
+    Const C2 = 'a'
+    Type T1 = Arr(10,Int)
+    Var V1 : Int at offset 4
+    Var V2 : Arr(10,Arr(10,Int)) at offset 5
+    Function F : Int at address 0
+        Param P1 : Int at offset 4
+        Param VAR P2 : Char at offset 5
+
+    Procedure P at address 0
+        Param V1 : Int at offset 4
+        Const C1 = 'a'
+        Const C3 = 10
+        Type T1 = Int
+        Type T2 = Arr(10,Int)
+        Var V2 : Arr(10,Int) at offset 5
+        Var V3 : Char at offset 15
+

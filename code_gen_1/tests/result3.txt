@@ -1,0 +1,11 @@
+Program EXAMPLE3 at address 0
+    Var I : Int at offset 4
+    Var N : Int at offset 5
+    Var P : Int at offset 6
+    Var Q : Int at offset 7
+    Var C : Char at offset 8
+    Procedure HANOI at address 0
+        Param N : Int at offset 4
+        Param S : Int at offset 5
+        Param Z : Int at offset 6
+

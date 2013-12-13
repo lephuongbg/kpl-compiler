@@ -1,0 +1,5 @@
+Program EXAMPLE2 at address 0
+    Var N : Int at offset 4
+    Function F : Int at address 0
+        Param N : Int at offset 4
+

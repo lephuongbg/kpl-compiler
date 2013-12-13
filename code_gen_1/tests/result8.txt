@@ -1,0 +1,9 @@
+Program EXAMPLE2 at address 0
+    Var N : Int at offset 4
+    Var M : Int at offset 5
+    Var P : Int at offset 6
+    Var A : Arr(10,Arr(10,Arr(10,Int))) at offset 7
+    Var I : Int at offset 1007
+    Var J : Int at offset 1008
+    Var K : Int at offset 1009
+    Var S : Int at offset 1010

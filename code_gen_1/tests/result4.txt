@@ -1,0 +1,17 @@
+Program EXAMPLE4 at address 0
+    Const MAX = 10
+    Type T = Int
+    Var A : Arr(10,Int) at offset 4
+    Var N : Int at offset 14
+    Var CH : Char at offset 15
+    Procedure INPUT at address 0
+        Var I : Int at offset 4
+        Var TMP : Int at offset 5
+
+    Procedure OUTPUT at address 0
+        Var I : Int at offset 4
+
+    Function SUM : Int at address 0
+        Var I : Int at offset 4
+        Var S : Int at offset 5
+

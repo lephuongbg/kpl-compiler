@@ -1,0 +1,18 @@
+Program EXAMPLE2 at address 0
+    Var N : Int at offset 4
+    Var S : Int at offset 5
+    Var T : Int at offset 6
+    Function FSUM : Int at address 0
+        Param N : Int at offset 4
+        Var S : Int at offset 5
+        Procedure PSUM1 at address 0
+            Param N : Int at offset 4
+            Var I : Int at offset 5
+            Var S : Int at offset 6
+
+        Procedure PSUM2 at address 0
+            Param N : Int at offset 4
+            Param VAR S : Int at offset 5
+            Var I : Int at offset 6
+
+

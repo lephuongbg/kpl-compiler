@@ -1,0 +1,43 @@
+Program Example2; (* Factorial *)
+   
+Var n : Integer;
+    s : integer;
+    t : integer;	
+
+
+function fsum(n : integer) : integer;
+  var s : integer;
+
+  procedure psum1(n : integer);
+    var i : integer;
+        s : integer;
+  begin
+    s := 0;
+    for i := 1 to n do
+      s := s + i;
+    call writei(s + t);
+    call writeln;
+    fsum := s + t;
+  end;
+
+  procedure psum2(n : integer; var s : integer);
+    var i : integer;
+  begin
+    call psum1(n);
+    s := 0;
+    for i := 1 to n do
+      s := s + i;
+    s:= s + t;  
+  end;
+
+begin
+    call psum2(n,s);
+end;
+
+Begin
+   t := readi;
+   n := readi;
+
+   call writei(fsum(n));
+   call writeln;
+End. (* Factorial *)

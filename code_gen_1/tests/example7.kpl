@@ -1,0 +1,11 @@
+Program Example2; (* Factorial *)
+   
+Var n : Integer;
+
+Begin
+  For n := 1 To 7 Do
+    Begin
+      Call WriteLn;
+      Call WriteI( n );
+    End;
+End. (* Factorial *)

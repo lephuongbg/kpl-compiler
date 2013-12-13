@@ -1,0 +1,8 @@
+Program EXAMPLE5 at address 0
+    Const C = 1
+    Type T = Char
+    Function F : Char at address 0
+        Param I : Int at offset 4
+        Const B = 1
+        Type A = Arr(5,Char)
+
